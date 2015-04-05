@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Welcome to GymBuddies</title>
+  <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+   <script>
+// Update configuration to our liking
+$( document ).on( "mobileinit", function() {
+
+  // We want popups to cover the page behind them with a dark background
+  $.mobile.popup.prototype.options.overlayTheme = "b";
+
+  // Set a namespace for jQuery Mobile data attributes
+  $.mobile.ns = "jqm-";
+  $.mobile.pageLoadErrorMessage = "Fak!"
+});
+  </script>
+
+  <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <!--Function to load toolbars that are external to the page-->
+  <script type="text/javascript">
+    $(document).on('pagebeforecreate', function(evt){
+      //fetch a bunch of profiles from the database
+    });
+      $(document).on('pagecontainerbeforeshow', function(evt){
+      //fetch a picture of a comic book
+    });
+   $(document).on('pageCreate', function(evt){
+    $('#findagymbuddy').on("orientationchange", function(e, o){
+      alert("orientationchanged to " + e.orientation);
+    });
+    $('#findagymbuddy').on('swiperight', function(e){
+      alert('you like this dude');
+    });
+     $('#findagymbuddy').on('swipeleft', function(e){
+        alert('not your type');
+});
+  </script>
+
+
+
+</head>
+  <body>
+
+<header data-role = "header" data-position ="fixed" data-fullscreen = "true" data-theme ="a">
+  <h2>Welcome to GymBuddies</h2>
+  <nav data-role = "navbar">
+    <ul>
+   <li><a href = "#howitworks" class= class = "ui-btn ui-btn-active ui-state-persist">How it Works</a></li>
+   <li><a href = "#howitworks" class = "ui-btn ui-btn-active ui-state-persist">How it Works</a></li>
+   <li><a href = "#howitworks" class = "ui-btn ui-btn-active ui-state-persist">How it Works</a></li>
+   <li><a href = "#howitworks" class = "ui-btn ui-btn-active ui-state-persist">How it Works</a></li>
+  </ul>
+</nav>
+ </header>
+
+    <div id = "howitworks" data-role = "page">
+
+    </div>
+
+  		<div class = "ui-content">
+        <p>How it Works</p>
+            Step 1: You sign up. You can do this by yourself, or connect with a social network
+            Step 2: You swipe right or left based on people who you want to work out with
+                When you sign up, you can specify a number of options that will help match us better with you
+                    a)does it have to be someone that goes to your gym
+                    b)age range
+                    c) fitness level
+                    d) when do you work out
+            Step 3: When two people match, you are each notified
+              3a) A chat window appears where you can work it out
+              3b) You continue swiping
+                i)  to workout a date and time. You are shown tomorrow morning, tomorrow afternoon, tomorrow at lunch time. When you both agree on a time, you move on
+                ii) to decide what the workout will be. STandard workouts like cardio/lifting. This is a chance for marketers to get in on the app. Nike will say do our blah-blah-blah workout
+            Step 4: Some time prior to the workout we send:
+                a) reminders that you're going to workout
+                b) funny jokes
+                c) weird buddhist quotes
+                d) funny noises and lunks
+            </p>
+            <a href = "#faq"> Cool </a>
+        </div>
+
+
+      <div id = "faq" data-role = "page">
+        <div class = "ui-content">
+        <p>FAQ</p>
+          <p>
+          GymBuddies wants to make the gym a social place. We think everytime you go to lift or to run or to space out, you should have the option to go do it with a friend. Working out with someone usually makes the workout more fun and it helps motivate you to keep coming back to the gym.</p>
+
+          <p>Isn't it weird to workout with a stranger?</p>
+
+          <p>At gymbuddies, our philosophy is everyone is your friend, you just haven't become friends with them yet. We don't think the lumberjack deadlifting 500 pounds and excreting 4.7 ounces of saliva while doing it has nothing in common with you. We help bridge that gap in a safe and friendly manner. </p>
+
+
+          <p>Why don't I just hit up my friends?</p>
+
+          <p>Of course you can. It's tough because you're friends have a time schedule that might not be yours, fitness goals that you may not share, a refusal to shower that just doesn't jive with you, or they are a convicted felon you can't be seen with.
+          </p>
+
+          <p>What are some great use cases?</p>
+
+          <p>The most awesome of cases is if you are new to a city and need to make friends. You can awkardly hit on girls at a bar, you can ask your co-workers out, or you can FIND SOME COMMON ACTIVITIES that are fun.
+          </p>
+        </div>
+  		</div>
+
+
+    <div id ="confirmationpage" data-role = "page" data-dialog = "true" data-close-btn= "right">
+    </div>
+    <div class = "ui-content">
+  		<p>Here I'll display a screenshot of the calendar and time for the workout. Some hilarious image and maybe a cartoon</p>
+
+      <p> Thanks for signing up! </p>
+  	</div>
+
+
+    <div class = "decisions" data-role ="controlgroup" data-type="horizontal">
+  		<button class = "ui-btn"> FAQ </a>
+  		<button class = "ui-btn"> Find Some Buddies </a>
+  		<button class = "ui-btn"> Check My Calendar </a>
+  		<a href = '#' class = 'ui-btn ui-shadow ui-btn-inline'> Cool </a>
+  		<a href = '#' class = 'ui-btn ui-shadow ui-btn-inline'> Wait I fucked up </a>
+  	</div>
+
+
+  	<fieldset data-role ="controlgroup" data-type="horizontal">
+  		<legend>Select an Option:</legend>
+  		<label for='rb1'>Option 1</label>
+  		<input type = "radio" name ='rbtn' id ="rb1" value = "rb1" />
+  		<label for='rb2'>Option 2</label>
+  		<input type = "radio" name ='rbtn' id ="rb6" value = "rb6" />
+  		<label for='rb3'>Option 3</label>
+  		<input type = "radio" name ='rbtn' id ="rb6" value = "rb6" />
+    </fieldset>
+
+
+
+  <footer data-role = "footer" data-position ="fixed" data-fullscreen = "true" data-theme ="a"> Brought to you by OralInc.</h2>
+    <nav data-role = "navbar">
+        <a href ="#calendar" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist">  View your Calendar</a>
+        <a href ="#matchbuddy" data-transition = "slide"  class = "ui-btn ui-btn-active ui-state-persist"> Find some friends to workout with</a>
+        <a href ="#picturescroll" data-transition = "pop" class = "ui-btn ui-btn-active ui-state-persist">Show us what kind of body you are working towards</a>
+        <a href ="#picturescroll" data-transition = "pop" class = "ui-btn ui-btn-active ui-state-persist">Yay or Nay on the following super heroes</a>
+        <a href ="#howitworks" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> How it Works</a>
+        <a href ="#faq" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> FAQ</a>
+           <a href ="#confirmations" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> Confirmation Page</a>
+         </nav>
+  </footer>
+
+
+</body>
+</html>
