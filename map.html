@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Welcome to GymBuddies</title>
+  <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <!--Function to load toolbars that are external to the page-->
+  <script type="text/javascript">
+  $(document).on('pagebeforecreate', function(evt){
+      //fetch a bunch of profiles from the database
+    });
+   $(document).on('pagecreate', function(evt){
+  ("[data-role="header"], [data-role="footer"]").toolbar();
+  });
+   $(document.on('scrollstart', function(e){
+  console.log('scrollstarted');
+   });
+   $(document.on('scrollstop', function(e){
+    console.log('scrollstop');
+   });
+   $('#findagymbuddy').on("orientationchange", function(e, o){
+      alert("orientationchanged to " + e.orientation);
+    });
+ });
+   /*
+ * Google Maps documentation: http://code.google.com/apis/maps/documentation/javascript/basics.html
+ * Geolocation documentation: http://dev.w3.org/geo/api/spec-source.html
+ */
+$( document ).on( "pagecreate", "#map-page", function() {
+    var defaultLatLng = new google.maps.LatLng(34.0983425, -118.3267434);  // Default to Hollywood, CA when no geolocation support
+    if ( navigator.geolocation ) {
+        function success(pos) {
+            // Location found, show map with these coordinates
+            drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+        }
+        function fail(error) {
+            drawMap(defaultLatLng);  // Failed to find location, show default map
+        }
+        // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
+        navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 500000, enableHighAccuracy:true, timeout: 6000});
+    } else {
+        drawMap(defaultLatLng);  // No geolocation support, show default map
+    }
+    function drawMap(latlng) {
+        var myOptions = {
+            zoom: 10,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+        // Add an overlay to the map of current lat/lng
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: "Greetings!"
+        });
+    }
+});
+  </script>
+  <style>
+#map-page, #map-canvas { width: 100%; height: 100%; padding: 0; }
+</style>
+</head>
+  <body>
+
+<div data-role="page" id="map-page" data-url="map-page">
+    <div data-role="header" data-theme="a">
+    <h1>Maps</h1>
+    </div>
+    <div role="main" class="ui-content" id="map-canvas">
+        <!-- map loads here... -->
+    </div>
+</div>
+
+      <footer data-role = "footer" data-position ="fixed" data-fullscreen = "true" data-theme ="a"> Brought to you by OralInc.</h2>
+    <nav data-role = "navbar" data-role = "controlgroup">
+      <a href ="#howitworks" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> How it Works</a>
+        <a href ="#faq" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> FAQ</a>
+        <a href ="#gymbuddy" data-transition = "slide"  class = "ui-btn ui-btn-active ui-state-persist"> Find some friends to workout with</a>
+        <a href ="#picturescroll" data-transition = "pop" class = "ui-btn ui-btn-active ui-state-persist">Show us what kind of body you are working towards</a>
+        <a href ="#info" data-transition = "slide" class = "ui-btn ui-btn-active ui-state-persist">Tell us a little about yourself and we'll find you better matches</a>
+        <a href ="#calendar" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> Check your workout schedule </a>
+         </nav>
+  </footer>
+
+
+</body>
+</html>

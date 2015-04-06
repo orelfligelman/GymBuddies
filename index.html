@@ -2,52 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width" initial-scale = "1">
   <title>Welcome to GymBuddies</title>
   <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  <!--Function to load toolbars that are external to the page-->
   <script type="text/javascript">
+
+
   $(document).on('pagebeforecreate', function(evt){
       //fetch a bunch of profiles from the database
     });
+
+
+  // <!--Function to load toolbars that are external to the page-->
    $(document).on('pagecreate', function(evt){
   ("[data-role="header"], [data-role="footer"]").toolbar();
   });
+
+
+
+   //HAndle Scrolling
    $(document.on('scrollstart', function(e){
   console.log('scrollstarted');
    });
    $(document.on('scrollstop', function(e){
     console.log('scrollstop');
+    //Handle orientation change events
    });
-   $('#findagymbuddy').on("orientationchange", function(e, o){
+
+
+
+   $('#gymbuddies').on("orientationchange", function(e, o){
       alert("orientationchanged to " + e.orientation);
     });
  });
-  </script>
+</script>
+
+
+ <!--  Router/Model replaces <%= %> with model instance -->
+<script id = "gymElement" type="text/template">
+<a href = "#<%= link %>"><img src= "<%= img %>" alt = "<%= name %>">
+</script>
 
 
 
+<script id = "GymBuddiessElement" type="text/template">
+<a href = "#<%= link %>"><img src= "<%= img %>" alt = "<%= name %>">
+</script>
 </head>
-  <body>
+<body>
+
 
 <header data-role = "header" data-position ="fixed" data-fullscreen = "true" data-theme ="a">
   <h2>Welcome to GymBuddies</h2>
-  <nav data-role = "navbar">
-    <ul>
-   <li><a href = "#howitworks" class= class = "ui-btn ui-btn-active ui-state-persist">How it Works</a></li>
-   <li><a href = "#howitworks" class = "ui-btn ui-btn-active ui-state-persist">How it Works</a></li>
-   <li><a href = "#howitworks" class = "ui-btn ui-btn-active ui-state-persist">How it Works</a></li>
-   <li><a href = "#howitworks" class = "ui-btn ui-btn-active ui-state-persist">How it Works</a></li>
-  </ul>
-</nav>
+  <nav data-role = "navbar" data-role= "controlgroup">
+    <a href ="#howitworks" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> How it Works</a>
+        <a href ="#faq" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> FAQ</a>
+        <a href ="#gymbuddies" data-transition = "slide"  class = "ui-btn ui-btn-active ui-state-persist"> Find some friends to workout with</a>
+        <a href ="#picturescroll" data-transition = "pop" class = "ui-btn ui-btn-active ui-state-persist">Show us what kind of body you are working towards</a>
+        <a href ="#info" data-transition = "slide" class = "ui-btn ui-btn-active ui-state-persist">Tell us a little about yourself and we'll find you better matches</a>
+        <a href ="#calendar" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> Check your workout schedule </a>
  </header>
 
+<!--  Back and Refresh Buttons -->
+  <a href="#demo-intro" data-rel="back" data-icon="carat-l" data-iconpos="notext">Back</a>
+        <a href="#" onclick="window.location.reload()" data-icon="back" data-iconpos="notext">Refresh</a>
+
+
+
+
     <div id = "howitworks" data-role = "page">
-
-    </div>
-
   		<div class = "ui-content">
         <p>How it Works</p>
             Step 1: You sign up. You can do this by yourself, or connect with a social network
@@ -68,9 +93,8 @@
                 c) weird buddhist quotes
                 d) funny noises and lunks
             </p>
-            <a href = "#faq"> Cool </a>
         </div>
-
+      </div>
 
       <div id = "faq" data-role = "page">
         <div class = "ui-content">
@@ -95,47 +119,71 @@
         </div>
   		</div>
 
+      <!-- Header for gymbuddies includes: "page" data-title = "gymbuddies" data-url = "gymbuddies-page" -->
+      <div id = "gymbuddies" data-role = "page" data-title = "gymbuddies" data-url = "gymbuddies-page">
+        <div role = "main" class = "ui-content">
+          <ul id="list" class="touch" data-role="listview" data-icon="false" data-split-icon="delete">
+          <h2> Swipe right if this person looks like someone you want to workout with, and swipe left if not </h2>
+          <!-- class serves the purpose of css -->
+          <a href="#" class="delete">Delete</a>
+          <li>
 
-    <div id ="confirmationpage" data-role = "page" data-dialog = "true" data-close-btn= "right">
-    </div>
-    <div class = "ui-content">
-  		<p>Here I'll display a screenshot of the calendar and time for the workout. Some hilarious image and maybe a cartoon</p>
-
-      <p> Thanks for signing up! </p>
-  	</div>
-
-
-    <div class = "decisions" data-role ="controlgroup" data-type="horizontal">
-  		<button class = "ui-btn"> FAQ </a>
-  		<button class = "ui-btn"> Find Some Buddies </a>
-  		<button class = "ui-btn"> Check My Calendar </a>
-  		<a href = '#' class = 'ui-btn ui-shadow ui-btn-inline'> Cool </a>
-  		<a href = '#' class = 'ui-btn ui-shadow ui-btn-inline'> Wait I fucked up </a>
-  	</div>
+           <!--     routing -->
+          <script id = "gymBuddiesElement" type="text/template">
+          <a href = "#<%= link %>"><img src= "<%= img %>"> <alt = "<%= name %>">
+          </script>
 
 
-  	<fieldset data-role ="controlgroup" data-type="horizontal">
-  		<legend>Select an Option:</legend>
-  		<label for='rb1'>Option 1</label>
-  		<input type = "radio" name ='rbtn' id ="rb1" value = "rb1" />
-  		<label for='rb2'>Option 2</label>
-  		<input type = "radio" name ='rbtn' id ="rb6" value = "rb6" />
-  		<label for='rb3'>Option 3</label>
-  		<input type = "radio" name ='rbtn' id ="rb6" value = "rb6" />
-    </fieldset>
+          <script id = "gymElement" type="text/template">
+          <a href = "#<%= link %>"><img src= "<%= img %>"> <alt = "<%= name %>">
+          </script>
 
+
+
+        <!--   Swiping function -->
+        <script>
+      $('#findagymbuddy').on('swiperight', function(e){
+        alert('you like this dude/dudette');
+          });
+      $('#findagymbuddy').on('swipeleft', function(e){
+        alert('not your type');
+      });
+        </script>
+        </div>
+
+        <div id="calendar" data-role = "page">
+          <div class = "ui-content">
+          <p> CHoose a date you can workout on</p>
+          <!-- swiping function -->
+          <input type="text" data-role="date" data-inline="true">
+        </div>
+      </div>
+
+
+        <div id ="info" data-role = "page">
+          <p> How hard do you go at the gym?</p>
+        <form>
+            <label for="slider-2">Slider:</label>
+            <input type="range" name="slider-2" id="slider-2" data-highlight="true" min="0" max="100" value="50">
+        </form>
+
+
+        <div id = "superheroes" data-role = "page">
+          <div class = "ui-content">
+          <p> What superhero do you most idealize?</p>
+          <img id = "superheroes">
+        </div>
 
 
   <footer data-role = "footer" data-position ="fixed" data-fullscreen = "true" data-theme ="a"> Brought to you by OralInc.</h2>
-    <nav data-role = "navbar">
-        <a href ="#calendar" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist">  View your Calendar</a>
-        <a href ="#matchbuddy" data-transition = "slide"  class = "ui-btn ui-btn-active ui-state-persist"> Find some friends to workout with</a>
-        <a href ="#picturescroll" data-transition = "pop" class = "ui-btn ui-btn-active ui-state-persist">Show us what kind of body you are working towards</a>
-        <a href ="#picturescroll" data-transition = "pop" class = "ui-btn ui-btn-active ui-state-persist">Yay or Nay on the following super heroes</a>
+    <nav data-role = "navbar" data-role = "controlgroup" data-type = "horizontal">
         <a href ="#howitworks" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> How it Works</a>
         <a href ="#faq" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> FAQ</a>
-           <a href ="#confirmations" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> Confirmation Page</a>
-         </nav>
+        <a href ="#gymbuddies" data-transition = "slide"  class = "ui-btn ui-btn-active ui-state-persist"> Find some friends to workout with</a>
+        <a href ="#picturescroll" data-transition = "pop" class = "ui-btn ui-btn-active ui-state-persist">Show us what kind of body you are working towards</a>
+        <a href ="#calendar" data-transition = "fade" class = "ui-btn ui-btn-active ui-state-persist"> Check your workout schedule </a>
+        <a href ="#info" data-transition = "slide" class = "ui-btn ui-btn-active ui-state-persist">Tell us a little about yourself and we'll find you better matches</a>
+    </nav>
   </footer>
 
 
